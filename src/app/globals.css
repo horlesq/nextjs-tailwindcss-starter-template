@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+/* Hide scrollbar for all browsers */
+html,
+body {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+@theme {
+    /* Primary Colors (Sand & Warmth) */
+    --color-primary-50: #fdf5e6;
+    --color-primary-100: #f5deb3;
+    --color-primary-200: #f3d299;
+    --color-primary-300: #e6b97a;
+    --color-primary-400: #c2955a;
+    --color-primary-500: #b8860b;
+    --color-primary-600: #8c6a08;
+    --color-primary-700: #6b4f06;
+    --color-primary-800: #4b3804;
+    --color-primary-900: #292002;
+    --color-primary-950: #1a1302;
+    --color-primary-990: #120d01;
+
+    /* Accent Colors (Ocean Blues) */
+    --color-accent-50: #e0f7fa;
+    --color-accent-100: #b3ebf2;
+    --color-accent-200: #80deea;
+    --color-accent-300: #4dd0e1;
+    --color-accent-400: #26c6da;
+    --color-accent-500: #00acc1;
+    --color-accent-600: #00838f;
+    --color-accent-700: #006064;
+    --color-accent-800: #004d40;
+    --color-accent-900: #002f32;
+    --color-accent-950: #00191a;
+}
+
+@layer components {
+    .spinner {
+        margin: 3.2rem auto 1.6rem;
+        width: 60px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        border: 8px solid theme("colors.primary.900");
+        border-right-color: theme("colors.primary.200");
+        animation: rotate 1s infinite linear;
+    }
+
+    @keyframes rotate {
+        to {
+            transform: rotate(1turn);
+        }
+    }
+}
+
