@@ -1,5 +1,6 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
+
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -11,7 +12,7 @@ const inter = Inter({
 
 export const metadata = {
     title: {
-        template: "%s | Next.js Starter",
+        template: "%s | Next.js + Tailwind CSS Starter",
         default: "Next.js + Tailwind CSS Starter",
     },
     description: "A clean starter template for Next.js with Tailwind CSS",
@@ -20,14 +21,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang="en">
-            <head>
-                <link
-                    rel="icon"
-                    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>"
-                />
-            </head>
+            <head></head>
             <body
-                className={`${inter.className} antialiased bg-white text-gray-900 min-h-screen flex flex-col`}
+                className={`${inter.className} antialiased bg-primary-50 text-gray-900 min-h-screen flex flex-col`}
             >
                 <Header />
 

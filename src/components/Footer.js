@@ -52,8 +52,16 @@ export default function Footer() {
                             © {new Date().getFullYear()}{" "}
                             nextjs-tailwindcss-starter-template
                         </p>
-                        <div className="text-gray-500 text-sm">
-                            Built with Next.js & Tailwind CSS
+                        <div className="flex items-center gap-2 text-gray-500 text-sm">
+                            <span>Created by</span>
+                            <a
+                                href="https://horly.dev/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-blue-600 hover:text-blue-700 font-medium transition-colors"
+                            >
+                                Horly
+                            </a>
                         </div>
                     </div>
                 </div>

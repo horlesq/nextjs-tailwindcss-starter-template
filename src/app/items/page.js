@@ -1,9 +1,10 @@
+import Link from "next/link";
+
 export const metadata = {
     title: "Items",
 };
 
 export default function Page() {
-    // Sample static data for demonstration
     const items = [
         { id: 1, name: "Sample Item 1", description: "Description for item 1" },
         { id: 2, name: "Sample Item 2", description: "Description for item 2" },
@@ -11,7 +12,7 @@ export default function Page() {
     ];
 
     return (
-        <div className="max-w-6xl mx-auto py-8">
+        <div className="max-w-6xl mx-auto py-12">
             <div className="mb-8">
                 <h1 className="text-4xl font-bold text-gray-900 mb-6">Items</h1>
                 <p className="text-gray-600">
@@ -22,21 +23,19 @@ export default function Page() {
 
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {items.map((item) => (
-                    <div
+                    <Link
                         key={item.id}
-                        className="border border-gray-200 rounded-lg p-6"
+                        href={`/items/${item.id}`}
+                        className="block border border-gray-200 rounded-lg p-6 hover:border-gray-300 hover:shadow-sm transition-all"
                     >
                         <h3 className="font-semibold text-gray-900 mb-2">
                             {item.name}
                         </h3>
                         <p className="text-gray-600 mb-4">{item.description}</p>
-                        <a
-                            href={`/items/${item.id}`}
-                            className="text-blue-600 hover:text-blue-700 font-medium"
-                        >
+                        <span className="text-blue-600 hover:text-blue-700 font-medium">
                             View Details →
-                        </a>
-                    </div>
+                        </span>
+                    </Link>
                 ))}
             </div>
         </div>

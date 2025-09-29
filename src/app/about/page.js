@@ -4,15 +4,15 @@ export const metadata = {
 
 export default function Page() {
     return (
-        <div className="max-w-6xl mx-auto py-8">
+        <div className="max-w-6xl mx-auto py-12">
             <h1 className="text-4xl font-bold text-gray-900 mb-6">About Us</h1>
-            <div className="prose prose-lg">
-                <p className="text-gray-600 mb-4">
+            <div className="space-y-4 text-gray-600">
+                <p>
                     This is a clean Next.js starter template with Tailwind CSS.
                     It provides a solid foundation for building modern web
                     applications.
                 </p>
-                <p className="text-gray-600">
+                <p>
                     Customize this template to fit your project needs. Add your
                     own components, pages, and styling to create something
                     amazing.

@@ -10,17 +10,17 @@ export default function Page({ params }) {
     };
 
     return (
-        <div className="max-w-6xl mx-auto py-8">
+        <div className="max-w-6xl mx-auto py-12">
             <div className="mb-6">
                 <Link
                     href="/items"
-                    className="text-blue-600 hover:text-blue-700"
+                    className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium"
                 >
-                    ← Back to Items
+                   ← Back to Items
                 </Link>
             </div>
 
-            <div className="bg-white rounded-lg border border-gray-200 p-6">
+            <div className="border border-gray-200 rounded-lg p-6">
                 <h1 className="text-3xl font-bold text-gray-900 mb-4">
                     {item.name}
                 </h1>
