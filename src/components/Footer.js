@@ -12,7 +12,7 @@ export default function Footer() {
 
     return (
         <footer className="bg-gray-50 border-t border-gray-200 mt-auto">
-            <div className="max-w-6xl mx-auto py-8">
+            <div className="max-w-6xl mx-auto py-8 px-4 sm:px-0">
                 <div className="flex flex-col lg:flex-row justify-between items-start gap-8">
                     <div className="flex-1">
                         <div className="flex items-center gap-2 mb-4">
