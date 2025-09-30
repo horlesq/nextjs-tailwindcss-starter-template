@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
         <html lang="en">
             <head></head>
             <body
-                className={`${inter.className} antialiased bg-primary-50 text-gray-900 min-h-screen flex flex-col`}
+                className={`${inter.className} antialiased bg-background text-gray-900 min-h-screen flex flex-col`}
             >
                 <Header />
 
