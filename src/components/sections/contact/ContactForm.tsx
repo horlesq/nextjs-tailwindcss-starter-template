@@ -17,18 +17,20 @@ export default function ContactForm() {
     const [isLoading, setIsLoading] = useState(false);
     const [alert, setAlert] = useState({ show: false, type: "", message: "" });
 
-    const handleChange = (e) => {
+    const handleChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    ) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const showAlert = (type, message) => {
+    const showAlert = (type: string, message: string) => {
         setAlert({ show: true, type, message });
         setTimeout(() => {
             setAlert({ show: false, type: "", message: "" });
         }, 5000);
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsLoading(true);
 
@@ -54,8 +56,8 @@ export default function ContactForm() {
                     contactForm.alerts.success ||
                     "Mesajul a fost trimis cu succes!"
             );
-        } catch (error) {
-            showAlert("error", error.message);
+        } catch (error: any) {
+            showAlert("error", error.message || "An error occurred");
         } finally {
             setIsLoading(false);
         }
@@ -169,7 +171,7 @@ export default function ContactForm() {
                             <textarea
                                 id="message"
                                 name="message"
-                                rows="5"
+                                rows={5}
                                 className="flex-1 bg-transparent text-md text-foreground placeholder:text-muted-foreground focus:outline-none resize-none"
                                 placeholder={
                                     contactForm.fields.message.placeholder

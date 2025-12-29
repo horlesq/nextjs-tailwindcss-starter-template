@@ -1,12 +1,21 @@
 import { MotionDiv } from "@/components/motion/MotionWrappers";
 
+type Alignment = "center" | "left" | "center-lg-left" | "center-lg-right";
+
+interface SectionHeaderProps {
+    title: string;
+    description?: string;
+    className?: string;
+    align?: Alignment;
+}
+
 export default function SectionHeader({
     title,
     description,
     className = "",
     align = "center",
-}) {
-    const alignmentClasses = {
+}: SectionHeaderProps) {
+    const alignmentClasses: Record<Alignment, string> = {
         center: "text-center mx-auto",
         left: "text-left",
         "center-lg-left": "text-center lg:text-left mx-auto lg:mx-0",

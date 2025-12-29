@@ -1,6 +1,7 @@
-import "./globals.css";
+import type { Metadata } from "next";
 import { Rubik } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import "./globals.css";
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -10,7 +11,7 @@ const rubik = Rubik({
     weight: ["400", "700", "900"],
 });
 
-export const metadata = {
+export const metadata: Metadata = {
     title: {
         template: "%s | Starter Template",
         default: "Starter Template",
@@ -21,7 +22,11 @@ export const metadata = {
     },
 };
 
-export default async function RootLayout({ children }) {
+export default function RootLayout({
+    children,
+}: Readonly<{
+    children: React.ReactNode;
+}>) {
     return (
         <html lang="en" suppressHydrationWarning>
             <head></head>

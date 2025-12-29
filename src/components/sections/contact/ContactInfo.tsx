@@ -7,14 +7,15 @@ import {
 } from "react-icons/ri";
 import { LuMail, LuPhone } from "react-icons/lu";
 import { contactInfo } from "@/lib/content";
+import { IconType } from "react-icons";
 
 export default function ContactInfo() {
-    const primaryIconMap = {
+    const primaryIconMap: Record<string, IconType> = {
         email: LuMail,
         phone: LuPhone,
     };
 
-    const socialIconMap = {
+    const socialIconMap: Record<string, IconType> = {
         instagram: RiInstagramLine,
         facebook: RiFacebookFill,
         linkedin: RiLinkedinFill,
@@ -62,7 +63,9 @@ export default function ContactInfo() {
                                     className="flex items-center gap-4 p-6 bg-card border-2 border-muted/30 rounded-xl hover:border-primary/50 transition-colors duration-200"
                                 >
                                     <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                                        <Icon className="w-6 h-6 text-primary" />
+                                        {Icon && (
+                                            <Icon className="w-6 h-6 text-primary" />
+                                        )}
                                     </div>
                                     <div className="flex flex-col min-w-0">
                                         <h3 className="font-bold text-foreground text-sm">
@@ -90,7 +93,9 @@ export default function ContactInfo() {
                                     aria-label={`Visit our ${social.platform} page`}
                                     className="flex items-center justify-center w-12 h-12 bg-card border-2 border-muted/30 rounded-xl hover:border-primary/50 transition-colors duration-200 group"
                                 >
-                                    <Icon className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                                    {Icon && (
+                                        <Icon className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                                    )}
                                 </a>
                             );
                         })}

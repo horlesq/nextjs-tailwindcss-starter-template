@@ -1,5 +1,3 @@
-// Generic site content — replace values for each new project
-
 // Navigation Menu Content
 export const nav = {
     items: [

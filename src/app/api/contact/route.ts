@@ -1,10 +1,17 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import emailjs from "@emailjs/nodejs";
 
 // Rate limiting
-const rateLimit = new Map();
+const rateLimit = new Map<string, number>();
 
-export async function POST(request) {
+interface ContactBody {
+    name: string;
+    email: string;
+    phone?: string;
+    message: string;
+}
+
+export async function POST(request: NextRequest) {
     try {
         // Get client IP for rate limiting
         const ip = request.headers.get("x-forwarded-for") || "unknown";
@@ -21,7 +28,7 @@ export async function POST(request) {
         rateLimit.set(ip, now);
 
         // Parse request body
-        const body = await request.json();
+        const body: ContactBody = await request.json();
         const { name, email, phone, message } = body;
 
         // Server-side validation
@@ -52,12 +59,12 @@ export async function POST(request) {
         };
 
         await emailjs.send(
-            process.env.EMAILJS_SERVICE_ID,
-            process.env.EMAILJS_TEMPLATE_ID,
+            process.env.EMAILJS_SERVICE_ID!,
+            process.env.EMAILJS_TEMPLATE_ID!,
             templateParams,
             {
-                publicKey: process.env.EMAILJS_PUBLIC_KEY,
-                privateKey: process.env.EMAILJS_PRIVATE_KEY,
+                publicKey: process.env.EMAILJS_PUBLIC_KEY!,
+                privateKey: process.env.EMAILJS_PRIVATE_KEY!,
             }
         );
 
@@ -65,10 +72,10 @@ export async function POST(request) {
             { success: true, message: "Message sent successfully!" },
             { status: 200 }
         );
-    } catch (error) {
+    } catch (error: any) {
         console.error("Contact form error:", error);
         return NextResponse.json(
-            { error: "An error occurred while sending the message." },
+            { error: "Internal server error. Please try again later." },
             { status: 500 }
         );
     }

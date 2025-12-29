@@ -3,13 +3,23 @@
 import { AnimatePresence, motion } from "motion/react";
 import { LuCheck, LuCircleAlert } from "react-icons/lu";
 
+interface AlertData {
+    show: boolean;
+    type: "success" | "error" | string;
+    message: string;
+}
+
+interface ToastProps {
+    alert: AlertData | null;
+}
+
 const variants = {
     initial: { opacity: 0, y: 20, scale: 0.98 },
     animate: { opacity: 1, y: 0, scale: 1 },
     exit: { opacity: 0, y: 20, scale: 0.98 },
 };
 
-export default function Toast({ alert }) {
+export default function Toast({ alert }: ToastProps) {
     if (!alert?.show) return null;
 
     const isSuccess = alert.type === "success";
