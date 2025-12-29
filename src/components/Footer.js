@@ -1,44 +1,46 @@
 "use client";
 
 import Link from "next/link";
+import { LuFacebook, LuInstagram, LuLinkedin } from "react-icons/lu";
+import { RiTiktokFill } from "react-icons/ri";
+
+import { footer } from "@/lib/content";
+
+const icons = {
+    facebook: LuFacebook,
+    instagram: LuInstagram,
+    tiktok: RiTiktokFill,
+    linkedin: LuLinkedin,
+};
 
 export default function Footer() {
-    const footerLinks = [
-        { href: "/", label: "Home" },
-        { href: "/about", label: "About" },
-        { href: "/items", label: "Items" },
-        { href: "/contact", label: "Contact" },
-    ];
-
     return (
-        <footer className="bg-gray-50 border-t border-gray-200 mt-auto">
-            <div className="max-w-6xl mx-auto py-8 px-4 sm:px-0">
-                <div className="flex flex-col lg:flex-row justify-between items-start gap-8">
-                    <div className="flex-1">
-                        <div className="flex items-center gap-2 mb-4">
-                            <span className="text-xl font-bold text-gray-900">
-                                nextjs-tailwindcss-starter-template
+        <footer className="bg-background-footer mt-auto px-4 sm:px-6 lg:px-8  z-20 ">
+            <div className="max-w-5xl mx-auto py-8 px-4">
+                <div className="flex flex-col md:flex-row justify-center md:justify-between items-center md:items-start gap-8">
+                    <div className="flex-1 text-center md:text-left">
+                        <div className="flex items-center gap-2 mb-4 justify-center md:justify-start">
+                            <span className="text-2xl font-black text-primary">
+                                {footer.companyName}
                             </span>
                         </div>
-                        <p className="text-gray-600 text-sm leading-relaxed max-w-md">
-                            A clean, modern starter template for Next.js with
-                            Tailwind CSS. Perfect for building your next web
-                            application.
+                        <p className="text-muted-foreground text-sm leading-relaxed max-w-md mx-auto md:mx-0">
+                            {footer.tagline}
                         </p>
                     </div>
 
-                    <div>
-                        <h3 className="text-gray-900 font-semibold text-sm mb-4">
-                            Quick Links
+                    <div className="text-center md:text-left">
+                        <h3 className="text-primary font-semibold text-md mb-2">
+                            {footer.quickLinks}
                         </h3>
-                        <ul className="space-y-2">
-                            {footerLinks.map((link) => (
-                                <li key={link.href}>
+                        <ul className="space-y-1">
+                            {footer.links.map((link) => (
+                                <li key={link.link}>
                                     <Link
-                                        href={link.href}
-                                        className="text-gray-600 hover:text-blue-600 text-sm transition-colors"
+                                        href={link.link}
+                                        className="text-muted-foreground hover:text-primary text-sm transition-colors"
                                     >
-                                        {link.label}
+                                        {link.name}
                                     </Link>
                                 </li>
                             ))}
@@ -46,23 +48,45 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <div className="border-t border-gray-200 pt-6 mt-6">
+                <div className="pt-6 mt-6 border-t border-muted">
                     <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-                        <p className="text-gray-500 text-sm">
-                            © {new Date().getFullYear()}{" "}
-                            nextjs-tailwindcss-starter-template
+                        <p className="text-muted-foreground text-xs">
+                            © {new Date().getFullYear()} {footer.companyName}
+                            {" - "}
+                            {footer.copyright}
                         </p>
-                        <div className="flex items-center gap-2 text-gray-500 text-sm">
-                            <span>Created by</span>
-                            <a
-                                href="https://horly.dev/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-blue-600 hover:text-blue-700 font-medium transition-colors"
+                        <div className="flex items-center gap-4">
+                            <Link
+                                href={footer.privacy.link}
+                                className="text-muted-foreground hover:text-primary text-xs transition-colors"
                             >
-                                Horly
-                            </a>
+                                {footer.privacy.label}
+                            </Link>
+                            <Link
+                                href={footer.terms.link}
+                                className="text-muted-foreground hover:text-primary text-xs transition-colors"
+                            >
+                                {footer.terms.label}
+                            </Link>
                         </div>
+                    </div>
+                    <div className="flex justify-center items-center gap-4 mt-4">
+                        {footer.socials.map((item) => {
+                            const Icon = icons[item.platform];
+                            if (!Icon) return null;
+                            return (
+                                <a
+                                    key={item.platform}
+                                    href={item.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-foreground hover:text-primary transition-colors"
+                                    aria-label={item.platform}
+                                >
+                                    <Icon className="h-5 w-5" />
+                                </a>
+                            );
+                        })}
                     </div>
                 </div>
             </div>

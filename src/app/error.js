@@ -2,18 +2,22 @@
 
 export default function Error({ error, reset }) {
     return (
-        <main className="flex justify-center items-center flex-col gap-6 py-16">
-            <h1 className="text-3xl font-bold text-gray-900">
-                Something went wrong!
-            </h1>
-            <p className="text-lg text-gray-600">{error.message}</p>
-
-            <button
-                className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
-                onClick={reset}
-            >
-                Try again
-            </button>
-        </main>
+        <div className="max-w-5xl mx-auto py-20 px-4 text-center flex-1 flex items-center justify-center">
+            <div className="space-y-6">
+                <h1 className="text-6xl font-black text-foreground">Error</h1>
+                <h2 className="text-xl font-semibold text-muted-foreground">
+                    Something went wrong
+                </h2>
+                <p className="text-muted-foreground max-w-md mx-auto">
+                    {error.message || "An unexpected error occurred."}
+                </p>
+                <button
+                    onClick={reset}
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-linear-to-r from-primary to-accent hover:opacity-90 text-background rounded-xl font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+                >
+                    Try again
+                </button>
+            </div>
+        </div>
     );
 }

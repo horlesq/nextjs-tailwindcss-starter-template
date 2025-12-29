@@ -1,9 +1,11 @@
-import Hero from "@/components/sections/Hero";
+import CTA from "@/components/sections/CTA";
+import HeroSection from "@/components/sections/Hero";
 
 export default function Page() {
     return (
-        <div>
-            <Hero />
-        </div>
+        <>
+            <HeroSection />
+            <CTA />
+        </>
     );
 }

@@ -1,17 +1,19 @@
+import ContactInfo from "@/components/sections/contact/ContactInfo";
+import ContactForm from "@/components/sections/contact/ContactForm";
+import HeroContact from "@/components/sections/contact/HeroContact";
+
 export const metadata = {
-    title: "Contact",
+    title: "Contact | Starter Template",
+    description:
+        "Get in touch with us for a free consultation. We are here to transform your ideas into digital reality.",
 };
 
-export default function Page() {
+export default function ContactPage() {
     return (
-        <div className="max-w-6xl mx-auto py-12">
-            <h1 className="text-4xl font-bold text-gray-900 mb-6">
-                Contact Us
-            </h1>
-            <p className="text-gray-600">
-                This is a placeholder contact page. Add your contact form or
-                information here.
-            </p>
-        </div>
+        <>
+            <HeroContact />
+            <ContactInfo />
+            <ContactForm />
+        </>
     );
 }

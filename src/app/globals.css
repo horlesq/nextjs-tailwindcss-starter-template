@@ -1,36 +1,138 @@
 @import "tailwindcss";
 
-/* Hide scrollbar for all browsers */
+/* ===== CSS Reset & Base Styles ===== */
 html,
 body {
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
+
 html::-webkit-scrollbar,
 body::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
+    display: none;
 }
 
-@theme {
-    --color-background: #ffffff;
-    --color-primary: #9d00ff;
-    --color-secondary: ##ff5c00;
+html {
+    color-scheme: light;
+    scroll-behavior: smooth;
 }
 
+/* ===== Single Theme: CSS Custom Properties (Variables) =====
+   Keep all theme colors in :root so the project uses a single theme.
+   Change the values below to adapt the site-wide appearance. */
+:root {
+    /* Core surface / typography */
+    --background: #ffffff; /* page background */
+    --foreground: #0a0a0a; /* main text color */
+    --card: #f5f7fa; /* card / surface background */
+    --muted: #f0f3f6; /* muted backgrounds */
+    --muted-foreground: #6b7280; /* muted text color */
+
+    --background-footer: #f8fafc; /* footer background */
+
+    /* SVG / illustration helpers */
+    --svg-light-accent: #f3f4f6;
+    --svg-stroke: #111827;
+
+    /* Primary colors (customize to taste) */
+    --primary: #0ea5a4; /* teal / primary accent */
+    --secondary: #111827; /* dark neutral for headings */
+    --accent: #f59e0b; /* accent (buttons, highlights) */
+}
+
+/* ===== Tailwind Theme Configuration (maps CSS variables for @apply) ===== */
+@theme inline {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-card: var(--card);
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-primary: var(--primary);
+    --color-secondary: var(--secondary);
+    --color-accent: var(--accent);
+    --color-background-footer: var(--background-footer);
+    --color-svg-light-accent: var(--svg-light-accent);
+    --color-svg-stroke: var(--svg-stroke);
+
+    --animate-ripple: ripple var(--duration, 2s) ease calc(var(--i, 0) * 0.2s)
+        infinite;
+}
+
+/* ===== Theme Transition Styles ===== */
+.theme-transition {
+    transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out,
+        color 0.3s ease-in-out;
+}
+
+/* View Transitions API (kept minimal) */
+@media (prefers-reduced-motion: no-preference) {
+    :root {
+        view-transition-name: root;
+    }
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+}
+
+/* ===== Component Styles ===== */
 @layer components {
+    /* Layout */
+    .page-container {
+        @apply max-w-xl lg:max-w-5xl mx-auto px-4 space-y-12 pb-16 md:pb-24 lg:pb-32;
+    }
+
+    /* Spinners */
     .spinner {
         margin: 3.2rem auto 1.6rem;
         width: 60px;
         aspect-ratio: 1;
         border-radius: 50%;
-        border: 8px solid theme("colors.primary");
-        border-right-color: theme("colors.secondary");
+        border: 8px solid var(--primary);
+        border-right-color: transparent;
         animation: rotate 1s infinite linear;
     }
 
+    .spinner-mini {
+        margin: 0;
+        width: 20px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        border: 2px solid var(--primary);
+        border-right-color: transparent;
+        animation: rotate 1s infinite linear;
+    }
+
+    .border-gradient {
+        border: 2px solid transparent;
+        background: linear-gradient(var(--background), var(--background))
+                padding-box,
+            linear-gradient(to right, var(--primary), var(--accent)) border-box;
+    }
+
+    /* Animations */
     @keyframes rotate {
         to {
             transform: rotate(1turn);
         }
     }
+    @keyframes ripple {
+        0%,
+        100% {
+            transform: translate(-50%, -50%) scale(1);
+        }
+        50% {
+            transform: translate(-50%, -50%) scale(0.9);
+        }
+    }
+}
+
+/* ===== Helpful utility defaults (optional) ===== */
+body {
+    background: var(--background);
+    color: var(--foreground);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }

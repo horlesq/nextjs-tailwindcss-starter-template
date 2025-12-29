@@ -1,94 +1,55 @@
-import { getPackageVersions } from "@/lib/versions";
-import Image from "next/image";
-import Link from "next/link";
+import { LuArrowRight } from "react-icons/lu";
+import { MotionDiv } from "@/components/motion/MotionWrappers";
 
-export default function Hero() {
-    const versions = getPackageVersions();
+import { hero } from "@/lib/content";
 
+export default function HeroSection() {
     return (
-        <section
-            className="text-center space-y-8 py-16"
-            aria-labelledby="hero-heading"
-        >
-            <div className="space-y-4">
-                <h1
-                    id="hero-heading"
-                    className="text-5xl font-bold text-gray-900"
-                >
-                    Next.js + Tailwind CSS Starter
-                </h1>
-                <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                    A clean, minimal starter template for building modern web
-                    applications with Next.js and Tailwind CSS.
-                </p>
-            </div>
+        <section className="relative flex items-center justify-center overflow-hidden bg-background md:min-h-0">
+            <div className="relative z-10 w-full max-w-5xl mx-auto pt-32 pb-12 sm:pt-36 sm:pb-16 md:pt-44 md:pb-12">
+                <div className="text-center space-y-6 sm:space-y-8">
+                    {/* Main Heading */}
+                    <MotionDiv
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.1 }}
+                        className="space-y-3 sm:space-y-4"
+                    >
+                        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-tight">
+                            <span className="bg-linear-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent">
+                                {hero.heading.gradient}
+                            </span>
+                            <br />
+                            <span className="text-foreground">
+                                {hero.heading.normal}
+                            </span>
+                        </h1>
+                        <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed px-4 sm:px-0">
+                            {hero.description}
+                        </p>
+                    </MotionDiv>
 
-            <div className="flex flex-wrap gap-4 justify-center">
-                <Link
-                    href="/about"
-                    className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
-                >
-                    Get Started
-                </Link>
-
-                <Link
-                    href="https://github.com/horlesq/nextjs-tailwindcss-starter-template"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 border border-gray-300 text-gray-700 px-6 py-3 rounded-lg font-medium hover:bg-gray-50 transition-colors"
-                >
-                    <Image
-                        src="/icons/github.svg"
-                        alt="GitHub"
-                        width={24}
-                        height={24}
-                    />
-                    GitHub
-                </Link>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8 mt-24">
-                <div className="text-center space-y-3">
-                    <div className="flex items-center justify-center">
-                        <Image
-                            src="/icons/nextjs.svg"
-                            alt="Next.js"
-                            width={48}
-                            height={48}
-                        />
-                    </div>
-                    <h3 className="font-semibold text-gray-900">Next.js</h3>
-                    <p className="text-gray-600">Version {versions.next}</p>
-                </div>
-
-                <div className="text-center space-y-3">
-                    <div className="flex items-center justify-center">
-                        <Image
-                            src="/icons/react.svg"
-                            alt="React"
-                            width={48}
-                            height={48}
-                        />
-                    </div>
-                    <h3 className="font-semibold text-gray-900">React</h3>
-                    <p className="text-gray-600">Version {versions.react}</p>
-                </div>
-
-                <div className="text-center space-y-3">
-                    <div className="flex items-center justify-center">
-                        <Image
-                            src="/icons/tailwindcss.svg"
-                            alt="Tailwind CSS"
-                            width={48}
-                            height={48}
-                        />
-                    </div>
-                    <h3 className="font-semibold text-gray-900">
-                        Tailwind CSS
-                    </h3>
-                    <p className="text-gray-600">
-                        Version {versions.tailwindcss}
-                    </p>
+                    {/* CTA Buttons */}
+                    <MotionDiv
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
+                        className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 px-4 sm:px-0"
+                    >
+                        <a
+                            href={hero.cta.primaryLink}
+                            className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-linear-to-r from-primary to-accent hover:opacity-90 text-background rounded-xl font-bold text-base sm:text-lg shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
+                        >
+                            {hero.cta.primary}
+                            <LuArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
+                        </a>
+                        <a
+                            href={hero.cta.secondaryLink}
+                            className="px-6 sm:px-8 py-3 sm:py-4 bg-background/80 hover:bg-background text-foreground rounded-xl font-bold text-base sm:text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 backdrop-blur-sm border-2 border-primary/30 hover:border-accent/50"
+                        >
+                            {hero.cta.secondary}
+                        </a>
+                    </MotionDiv>
                 </div>
             </div>
         </section>

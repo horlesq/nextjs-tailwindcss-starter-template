@@ -1,37 +1,39 @@
 import "./globals.css";
-import { Inter } from "next/font/google";
+import { Rubik } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 
-import Header from "@/components/Header";
+import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-const inter = Inter({
+const rubik = Rubik({
     subsets: ["latin"],
-    variable: "--font-inter",
-    display: "swap",
+    weight: ["400", "700", "900"],
 });
 
 export const metadata = {
     title: {
-        template: "%s | Next.js + Tailwind CSS Starter",
-        default: "Next.js + Tailwind CSS Starter",
+        template: "%s | Starter Template",
+        default: "Starter Template",
     },
-    description: "A clean starter template for Next.js with Tailwind CSS",
+    description: "A premium starter template for modern web applications.",
+    icons: {
+        icon: "/favicon.ico",
+    },
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
     return (
-        <html lang="en">
+        <html lang="en" suppressHydrationWarning>
             <head></head>
             <body
-                className={`${inter.className} antialiased bg-background text-gray-900 min-h-screen flex flex-col`}
+                className={`${rubik.className} antialiased min-h-screen flex flex-col bg-background`}
             >
-                <Header />
+                <Navbar />
 
-                <main className="flex-1 px-4 sm:px-6 lg:px-8 py-8">
-                    <div className="max-w-6xl mx-auto w-full">{children}</div>
-                </main>
+                {children}
 
                 <Footer />
+                <Analytics />
             </body>
         </html>
     );
