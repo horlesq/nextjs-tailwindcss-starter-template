@@ -1,41 +1,52 @@
 # Next.js + Tailwind CSS Starter Template
 
-A minimal, starter template for building modern web applications with [Next.js](https://nextjs.org/) and [Tailwind CSS](https://tailwindcss.com/). This template provides a clean foundation with basic configuration, placeholder components, and clear instructions for customization. All project-specific logic, branding, authentication, and data dependencies have been removed.
+A modern starter template designed for building fast, responsive, and SEO-optimized web applications using Next.js, Tailwind CSS and TypeScript.
+
 
 ---
 
 ## Table of Contents
 
-- [Features](#features)
-- [Usage](#usage)
-- [Technologies](#technologies)
-- [Installation](#installation)
-- [Customization](#customization)
-- [Folder Structure](#folder-structure)
-- [License](#license)
-- [Contact](#contact)
+-   [Features](#features)
+-   [Usage](#usage)
+-   [Technologies](#technologies)
+-   [Installation](#installation)
+-   [Customization](#customization)
+-   [Folder Structure](#folder-structure)
+-   [License](#license)
+-   [Contact](#contact)
 
 ---
 
 ## Features
 
-- **Next.js 14+ with App Router**
-- **Tailwind CSS** configured and ready to use
-- Example layout, header, footer, and navigation components
-- Minimal, generic page structure (Home, About, Contact, Items)
-- Placeholder assets and content
-- ESLint and Prettier configuration
+-   **Next.js 16 (App Router):** Leveraging the latest Next.js features for optimal performance and developer experience.
+-   **Tailwind CSS 4:** Modern utility-first styling with the newest Tailwind CSS version.
+-   **Motion (Framer Motion):** Smooth, high-performance animations for a premium feel.
+-   **React 19:** Utilizing the latest React features and improvements.
+-   **EmailJS Integration:** Built-in contact form functionality without the need for a backend server.
+-   **TypeScript:** Type-safe development for better maintainability and fewer bugs.
+-   **Responsive Design:** Fully responsive components that work on all devices.
+-   **SEO Optimized:** Pre-configured metadata and semantic HTML.
 
 ## Usage
 
-- Use as a starting point for any new Next.js + Tailwind CSS project
-- Replace placeholder content and assets with your own
-- Extend with your preferred libraries and tools
+This template is designed to be a quick start for modern web applications.
+
+1. **Contact Form:** Configure your EmailJS service ID, template ID, and public key in `.env.local`.
+2. **Sections:** New sections can be added in `src/components/sections`.
+3. **Icons:** Use `react-icons` for a wide variety of icon sets.
 
 ## Technologies
 
-- **Frontend:** Next.js, React, JavaScript (ES6+), Tailwind CSS
-- **Other Tools:** ESLint, Prettier
+-   [Next.js](https://nextjs.org/)
+-   [React](https://reactjs.org/)
+-   [Tailwind CSS](https://tailwindcss.com/)
+-   [TypeScript](https://www.typescriptlang.org/)
+-   [Motion](https://motion.dev/)
+-   [EmailJS](https://www.emailjs.com/)
+-   [React Icons](https://react-icons.github.io/react-icons/)
+-   [Vercel Analytics](https://vercel.com/analytics)
 
 ## Installation
 
@@ -54,28 +65,42 @@ To get started with this template, follow these steps:
     npm install
     ```
 
-3. **Start the development server:**
+3. **Set up Environment Variables:**
+
+    Create a `.env.local` file and add your EmailJS and Vercel Analytics keys:
+
+    ```env
+    NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_service_id
+    NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id
+    NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key
+    ```
+
+4. **Start the development server:**
 
     ```bash
     npm run dev
     ```
 
-4. **Open your browser and navigate to [http://localhost:3000](http://localhost:3000) to access the application.**
+5. **Open your browser and navigate to [http://localhost:3000](http://localhost:3000) to access the application.**
 
 ## Customization
 
-- Replace placeholder content in `src/app/` and `src/components/` with your own pages and components.
-- Update or remove placeholder images in the `public/` directory.
-- Edit `tailwind.config.js` and `postcss.config.mjs` to adjust styling as needed.
-- Remove or add dependencies in `package.json` as your project requires.
+-   **Theming:** Customize colors and typography in `src/app/globals.css`.
+-   **Content:** Update the main content in `src/lib/content.ts` (if applicable) or directly in the components.
+-   **Tailwind:** Modify `tailwind.config.js` for custom Tailwind settings.
 
 ## Folder Structure
 
-- `src/app/` – Main application pages and layouts
-- `src/components/` – Reusable UI components
-- `public/` – Static assets (images, favicon, etc.)
-- `tailwind.config.js` – Tailwind CSS configuration
-- `postcss.config.mjs` – PostCSS configuration
+```text
+src/
+├── app/            # Next.js App Router (routes, layouts, globals)
+├── components/     # Reusable UI components and sections
+│   ├── motion/     # Motion-wrapped components
+│   └── sections/   # Major page sections
+├── hooks/          # Custom React hooks
+├── lib/            # Utility functions and data
+└── public/         # Static assets
+```
 
 ## License
 
