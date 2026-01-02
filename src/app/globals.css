@@ -30,14 +30,10 @@ html {
 
     --background-footer: #f8fafc; /* footer background */
 
-    /* SVG / illustration helpers */
-    --svg-light-accent: #f3f4f6;
-    --svg-stroke: #111827;
-
     /* Primary colors (customize to taste) */
-    --primary: #0ea5a4; /* teal / primary accent */
-    --secondary: #111827; /* dark neutral for headings */
-    --accent: #f59e0b; /* accent (buttons, highlights) */
+    --primary: #2563eb;
+    --secondary: #111827;
+    --accent: #4338ca;
 }
 
 /* ===== Tailwind Theme Configuration (maps CSS variables for @apply) ===== */
@@ -51,11 +47,6 @@ html {
     --color-secondary: var(--secondary);
     --color-accent: var(--accent);
     --color-background-footer: var(--background-footer);
-    --color-svg-light-accent: var(--svg-light-accent);
-    --color-svg-stroke: var(--svg-stroke);
-
-    --animate-ripple: ripple var(--duration, 2s) ease calc(var(--i, 0) * 0.2s)
-        infinite;
 }
 
 /* ===== Theme Transition Styles ===== */
@@ -105,26 +96,10 @@ html {
         animation: rotate 1s infinite linear;
     }
 
-    .border-gradient {
-        border: 2px solid transparent;
-        background: linear-gradient(var(--background), var(--background))
-                padding-box,
-            linear-gradient(to right, var(--primary), var(--accent)) border-box;
-    }
-
     /* Animations */
     @keyframes rotate {
         to {
             transform: rotate(1turn);
-        }
-    }
-    @keyframes ripple {
-        0%,
-        100% {
-            transform: translate(-50%, -50%) scale(1);
-        }
-        50% {
-            transform: translate(-50%, -50%) scale(0.9);
         }
     }
 }

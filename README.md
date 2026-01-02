@@ -1,5 +1,8 @@
 # Next.js + Tailwind CSS Starter Template
 
+A modern starter template designed for building fast, responsive, and SEO-optimized web applications using Next.js, Tailwind CSS and TypeScript.
+
+
 ---
 
 ## Table of Contents
